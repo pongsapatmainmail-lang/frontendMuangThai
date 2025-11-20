@@ -99,6 +99,7 @@
     width: 100%;
 }
 
+/* Responsive สำหรับมือถือ */
 @media (max-width: 768px) {
     .create-shop-form-container {
         padding: 20px;

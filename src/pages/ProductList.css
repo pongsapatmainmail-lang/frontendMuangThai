@@ -113,6 +113,7 @@
     background: #d73211;
 }
 
+/* ===== Responsive Tablet ===== */
 @media (max-width: 1024px) {
     .product-list-content {
         grid-template-columns: 1fr;
@@ -124,6 +125,7 @@
     }
 }
 
+/* ===== Responsive มือถือ ===== */
 @media (max-width: 768px) {
     .products-header {
         flex-direction: column;
@@ -134,5 +136,16 @@
     .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 10px;
+    }
+    
+    .clear-filters-btn, .reset-filter-btn {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+    
+    .product-list-container h1 {
+        font-size: 24px;
     }
 }

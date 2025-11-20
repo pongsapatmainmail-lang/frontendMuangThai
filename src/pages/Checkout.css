@@ -111,6 +111,7 @@
     font-size: 24px;
 }
 
+/* Responsive สำหรับมือถือ */
 @media (max-width: 768px) {
     .checkout-content {
         grid-template-columns: 1fr;

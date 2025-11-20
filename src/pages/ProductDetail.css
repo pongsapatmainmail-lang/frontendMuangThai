@@ -249,11 +249,21 @@
     color: #333;
 }
 
+/* ===== Responsive Tablet ===== */
+@media (max-width: 1024px) {
+    .product-detail-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 20px;
+    }
+}
+
+/* ===== Responsive มือถือ ===== */
 @media (max-width: 768px) {
     .product-detail-content {
         grid-template-columns: 1fr;
         gap: 20px;
-        padding: 20px;
+        padding: 15px;
     }
 
     .product-title {
@@ -266,5 +276,20 @@
 
     .action-buttons {
         grid-template-columns: 1fr;
+    }
+
+    .quantity-controls input {
+        width: 50px;
+        height: 36px;
+    }
+
+    .quantity-controls button {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .product-price-section {
+        padding: 15px;
     }
 }

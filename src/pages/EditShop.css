@@ -21,6 +21,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Success message */
 .success-message {
     background: #e8f5e9;
     color: #2e7d32;
@@ -31,6 +32,7 @@
     font-weight: 500;
 }
 
+/* Image preview with remove button */
 .image-with-remove {
     position: relative;
     width: 100%;
@@ -61,12 +63,14 @@
     transform: scale(1.1);
 }
 
+/* File input hint */
 .file-hint {
     margin-top: 8px;
     font-size: 12px;
     color: #999;
 }
 
+/* Status info panel */
 .status-info {
     background: #f8f9fa;
     border-radius: 8px;
@@ -98,6 +102,7 @@
     font-weight: bold;
 }
 
+/* Status badge variants */
 .status-badge.active {
     background: #e8f5e9;
     color: #2e7d32;
@@ -118,6 +123,7 @@
     color: #f57c00;
 }
 
+/* Status note */
 .status-note {
     margin-top: 15px;
     padding: 12px;
@@ -128,6 +134,7 @@
     color: #1565c0;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .edit-shop-form-container {
         padding: 20px;

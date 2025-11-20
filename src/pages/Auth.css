@@ -103,6 +103,7 @@
     text-decoration: underline;
 }
 
+/* Responsive สำหรับมือถือ */
 @media (max-width: 768px) {
     .auth-box {
         padding: 30px 20px;

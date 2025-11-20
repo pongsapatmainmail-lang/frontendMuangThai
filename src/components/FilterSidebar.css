@@ -1,3 +1,4 @@
+/* Sidebar Filter - Desktop & Mobile */
 .filter-sidebar {
     background: white;
     border-radius: 8px;
@@ -5,8 +6,10 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 20px;
+    transition: all 0.3s;
 }
 
+/* Filter Section */
 .filter-section {
     margin-bottom: 30px;
 }
@@ -15,14 +18,31 @@
     margin-bottom: 0;
 }
 
+/* Section Title */
 .filter-section h3 {
     font-size: 18px;
     margin-bottom: 15px;
     color: #333;
     border-bottom: 2px solid #ee4d2d;
     padding-bottom: 10px;
+    cursor: default;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Collapsible Section - Mobile */
+.filter-section.collapsible h3 {
+    cursor: pointer;
+}
+
+.filter-section.collapsible .filter-options {
+    max-height: 500px; /* สูงสุดเมื่อเปิด */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* Filter Options */
 .filter-options {
     display: flex;
     flex-direction: column;
@@ -58,4 +78,44 @@
 .filter-option input[type="radio"]:checked + span {
     color: #ee4d2d;
     font-weight: bold;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .filter-sidebar {
+        position: relative;
+        top: auto;
+        padding: 10px;
+        border-radius: 0;
+        box-shadow: none;
+        margin-bottom: 20px;
+    }
+
+    /* ปิด collapsible section เริ่มต้น */
+    .filter-section.collapsible .filter-options {
+        max-height: 0;
+    }
+
+    /* ทำ options เป็น scroll แนวนอน */
+    .filter-options {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+
+    .filter-option {
+        flex: 0 0 auto;
+        padding: 6px 10px;
+    }
+
+    /* ซ่อน scroll bar */
+    .filter-options::-webkit-scrollbar {
+        display: none;
+    }
+    .filter-options {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }

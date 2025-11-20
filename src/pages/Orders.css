@@ -200,6 +200,20 @@
     color: white;
 }
 
+/* ===== Responsive Tablet ===== */
+@media (max-width: 1024px) {
+    .order-item {
+        grid-template-columns: 70px 1fr 80px;
+        gap: 12px;
+    }
+
+    .item-image {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* ===== Responsive มือถือ ===== */
 @media (max-width: 768px) {
     .order-header {
         flex-direction: column;
@@ -224,5 +238,18 @@
 
     .order-actions {
         text-align: left;
+    }
+
+    .item-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .total-price {
+        font-size: 20px;
+    }
+
+    .cancel-order-btn {
+        width: 100%;
     }
 }

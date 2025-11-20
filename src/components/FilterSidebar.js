@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './FilterSidebar.css';
 
 function FilterSidebar({ 
@@ -6,15 +6,34 @@ function FilterSidebar({
     selectedCategory, 
     onCategoryChange,
     sortBy,
-    onSortChange,
-    priceRange,
-    onPriceRangeChange
+    onSortChange
 }) {
+    // state สำหรับ collapsible บนมือถือ
+    const [collapsedSections, setCollapsedSections] = useState({
+        category: false,
+        sort: false
+    });
+
+    const toggleSection = (section) => {
+        setCollapsedSections(prev => ({
+            ...prev,
+            [section]: !prev[section]
+        }));
+    };
+
     return (
         <div className="filter-sidebar">
-            <div className="filter-section">
-                <h3>หมวดหมู่</h3>
-                <div className="filter-options">
+            <div className={`filter-section collapsible`}>
+                <h3 onClick={() => toggleSection('category')}>
+                    หมวดหมู่
+                    <span className="collapse-icon">
+                        {collapsedSections.category ? '▲' : '▼'}
+                    </span>
+                </h3>
+                <div 
+                    className="filter-options"
+                    style={{ maxHeight: collapsedSections.category ? '500px' : '0' }}
+                >
                     <label className="filter-option">
                         <input
                             type="radio"
@@ -40,9 +59,17 @@ function FilterSidebar({
                 </div>
             </div>
 
-            <div className="filter-section">
-                <h3>เรียงตาม</h3>
-                <div className="filter-options">
+            <div className={`filter-section collapsible`}>
+                <h3 onClick={() => toggleSection('sort')}>
+                    เรียงตาม
+                    <span className="collapse-icon">
+                        {collapsedSections.sort ? '▲' : '▼'}
+                    </span>
+                </h3>
+                <div 
+                    className="filter-options"
+                    style={{ maxHeight: collapsedSections.sort ? '500px' : '0' }}
+                >
                     <label className="filter-option">
                         <input
                             type="radio"

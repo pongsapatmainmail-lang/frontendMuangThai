@@ -175,6 +175,7 @@
     color: #999;
 }
 
+/* Responsive สำหรับมือถือ */
 @media (max-width: 768px) {
     .form-actions {
         flex-direction: column;

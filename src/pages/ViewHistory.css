@@ -89,6 +89,8 @@
     cursor: pointer;
     transition: all 0.3s;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .history-card:hover {
@@ -144,6 +146,9 @@
 
 .history-card-info {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .history-card-name {
@@ -169,11 +174,13 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .history-card-price {
     color: #ee4d2d;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -211,9 +218,14 @@
     background: #d73211;
 }
 
+/* ===== Responsive สำหรับมือถือ ===== */
 @media (max-width: 768px) {
+    .view-history-container {
+        padding: 10px;
+    }
+
     .history-grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        grid-template-columns: 1fr; /* 1 card ต่อแถว */
         gap: 15px;
     }
 
@@ -224,9 +236,51 @@
     .history-header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 10px;
     }
 
     .clear-all-btn {
         width: 100%;
+    }
+
+    .history-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .history-card-name {
+        font-size: 15px;
+        height: auto;
+    }
+
+    .history-card-price {
+        font-size: 16px;
+    }
+
+    .history-card-stock {
+        font-size: 12px;
+    }
+
+    .history-add-cart-btn {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .empty-history {
+        padding: 40px 15px;
+    }
+
+    .empty-icon {
+        font-size: 60px;
+    }
+
+    .empty-history p {
+        font-size: 16px;
+    }
+
+    .browse-btn {
+        padding: 10px 20px;
+        font-size: 14px;
     }
 }

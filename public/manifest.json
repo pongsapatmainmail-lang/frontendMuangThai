@@ -3,12 +3,12 @@
   "name": "My Shop App",
   "icons": [
     {
-      "src": "/icons/icon-192x192.png",
+      "src": "logomuangthai.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/icons/icon-512x512.png",
+      "src": "logomuangthai2.png",
       "type": "image/png",
       "sizes": "512x512"
     }

@@ -15,16 +15,16 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const API_URL = process.env.REACT_APP_API_URL; // <- ใช้ environment variable
+
     // โหลด user จาก localStorage เมื่อเริ่มต้น
     useEffect(() => {
         const loadUser = async () => {
             const token = localStorage.getItem('access_token');
             if (token) {
                 try {
-                    const response = await axios.get('http://localhost:8000/api/users/profile/', {
-                        headers: {
-                            'Authorization': `Bearer ${token}`
-                        }
+                    const response = await axios.get(`${API_URL}/api/users/profile/`, {
+                        headers: { 'Authorization': `Bearer ${token}` }
                     });
                     setUser(response.data);
                 } catch (error) {
@@ -36,12 +36,12 @@ export const AuthProvider = ({ children }) => {
             setLoading(false);
         };
         loadUser();
-    }, []);
+    }, [API_URL]);
 
     // ลงทะเบียน
     const register = async (userData) => {
         try {
-            const response = await axios.post('http://localhost:8000/api/users/register/', userData);
+            const response = await axios.post(`${API_URL}/api/users/register/`, userData);
             return { success: true, data: response.data };
         } catch (error) {
             return { 
@@ -54,22 +54,15 @@ export const AuthProvider = ({ children }) => {
     // ล็อกอิน
     const login = async (username, password) => {
         try {
-            const response = await axios.post('http://localhost:8000/api/users/login/', {
-                username,
-                password
-            });
-            
+            const response = await axios.post(`${API_URL}/api/users/login/`, { username, password });
             const { access, refresh } = response.data;
             localStorage.setItem('access_token', access);
             localStorage.setItem('refresh_token', refresh);
 
             // ดึงข้อมูล user
-            const userResponse = await axios.get('http://localhost:8000/api/users/profile/', {
-                headers: {
-                    'Authorization': `Bearer ${access}`
-                }
+            const userResponse = await axios.get(`${API_URL}/api/users/profile/`, {
+                headers: { 'Authorization': `Bearer ${access}` }
             });
-            
             setUser(userResponse.data);
             return { success: true };
         } catch (error) {
@@ -84,15 +77,9 @@ export const AuthProvider = ({ children }) => {
     const updateProfile = async (userData) => {
         try {
             const token = localStorage.getItem('access_token');
-            const response = await axios.put(
-                'http://localhost:8000/api/users/profile/',
-                userData,
-                {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                }
-            );
+            const response = await axios.put(`${API_URL}/api/users/profile/`, userData, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
             setUser(response.data);
             return { success: true, data: response.data };
         } catch (error) {

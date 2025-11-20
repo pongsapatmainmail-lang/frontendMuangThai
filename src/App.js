@@ -25,8 +25,10 @@ import EditProduct from './pages/EditProduct';
 import './App.css';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
-axios.get(`${API_URL}/api/data`)
+// ใช้ environment variable สำหรับ backend URL
+const API_URL = process.env.REACT_APP_API_URL; // ตั้งค่าใน .env ของ React
+// ตัวอย่างเรียก API test
+axios.get(`${API_URL}/api/products/`).then(res => console.log('API Test:', res.data));
 
 function App() {
   const { getCartCount } = useCart();

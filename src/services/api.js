@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api';
+// เปลี่ยนเป็น URL ของ Render backend ของคุณ
+const API_URL = 'https://backendmuangthai.onrender.com/api'; // <-- แก้ตรงนี้
 
 // ฟังก์ชันดึง token
 const getAuthHeader = () => {
@@ -8,7 +9,7 @@ const getAuthHeader = () => {
     return token ? { 'Authorization': `Bearer ${token}` } : {};
 };
 
-// Products
+// =================== Products ===================
 export const getProducts = async (params = {}) => {
     try {
         const response = await axios.get(`${API_URL}/products/`, { params });
@@ -41,7 +42,7 @@ export const getCategories = async () => {
     }
 };
 
-// Orders
+// =================== Orders ===================
 export const createOrder = async (orderData) => {
     try {
         const response = await axios.post(
@@ -61,10 +62,7 @@ export const createOrder = async (orderData) => {
 
 export const getOrders = async () => {
     try {
-        const response = await axios.get(
-            `${API_URL}/orders/`,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.get(`${API_URL}/orders/`, { headers: getAuthHeader() });
         return response.data;
     } catch (error) {
         console.error('Error fetching orders:', error);
@@ -74,10 +72,7 @@ export const getOrders = async () => {
 
 export const getOrderById = async (id) => {
     try {
-        const response = await axios.get(
-            `${API_URL}/orders/${id}/`,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.get(`${API_URL}/orders/${id}/`, { headers: getAuthHeader() });
         return response.data;
     } catch (error) {
         console.error('Error fetching order:', error);
@@ -87,11 +82,7 @@ export const getOrderById = async (id) => {
 
 export const cancelOrder = async (id) => {
     try {
-        const response = await axios.post(
-            `${API_URL}/orders/${id}/cancel/`,
-            {},
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.post(`${API_URL}/orders/${id}/cancel/`, {}, { headers: getAuthHeader() });
         return { success: true, data: response.data };
     } catch (error) {
         console.error('Error cancelling order:', error);
@@ -102,12 +93,10 @@ export const cancelOrder = async (id) => {
     }
 };
 
+// =================== Notifications ===================
 export const getNotifications = async () => {
     try {
-        const response = await axios.get(
-            `${API_URL}/notifications/`,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.get(`${API_URL}/notifications/`, { headers: getAuthHeader() });
         return response.data;
     } catch (error) {
         console.error('Error fetching notifications:', error);
@@ -117,10 +106,7 @@ export const getNotifications = async () => {
 
 export const getUnreadCount = async () => {
     try {
-        const response = await axios.get(
-            `${API_URL}/notifications/unread_count/`,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.get(`${API_URL}/notifications/unread_count/`, { headers: getAuthHeader() });
         return response.data.count;
     } catch (error) {
         console.error('Error fetching unread count:', error);
@@ -130,11 +116,7 @@ export const getUnreadCount = async () => {
 
 export const markAsRead = async (id) => {
     try {
-        const response = await axios.post(
-            `${API_URL}/notifications/${id}/mark_as_read/`,
-            {},
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.post(`${API_URL}/notifications/${id}/mark_as_read/`, {}, { headers: getAuthHeader() });
         return { success: true, data: response.data };
     } catch (error) {
         console.error('Error marking as read:', error);
@@ -144,11 +126,7 @@ export const markAsRead = async (id) => {
 
 export const markAllAsRead = async () => {
     try {
-        const response = await axios.post(
-            `${API_URL}/notifications/mark_all_as_read/`,
-            {},
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.post(`${API_URL}/notifications/mark_all_as_read/`, {}, { headers: getAuthHeader() });
         return { success: true, data: response.data };
     } catch (error) {
         console.error('Error marking all as read:', error);
@@ -156,12 +134,10 @@ export const markAllAsRead = async () => {
     }
 };
 
+// =================== Admin ===================
 export const getAdminStats = async () => {
     try {
-        const response = await axios.get(
-            `${API_URL}/admin/stats/`,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.get(`${API_URL}/admin/stats/`, { headers: getAuthHeader() });
         return response.data;
     } catch (error) {
         console.error('Error fetching admin stats:', error);
@@ -171,10 +147,7 @@ export const getAdminStats = async () => {
 
 export const getRecentOrders = async () => {
     try {
-        const response = await axios.get(
-            `${API_URL}/admin/recent-orders/`,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.get(`${API_URL}/admin/recent-orders/`, { headers: getAuthHeader() });
         return response.data;
     } catch (error) {
         console.error('Error fetching recent orders:', error);
@@ -184,10 +157,7 @@ export const getRecentOrders = async () => {
 
 export const getLowStockProducts = async () => {
     try {
-        const response = await axios.get(
-            `${API_URL}/admin/low-stock/`,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.get(`${API_URL}/admin/low-stock/`, { headers: getAuthHeader() });
         return response.data;
     } catch (error) {
         console.error('Error fetching low stock products:', error);
@@ -197,11 +167,7 @@ export const getLowStockProducts = async () => {
 
 export const updateOrderStatus = async (orderId, status) => {
     try {
-        const response = await axios.patch(
-            `${API_URL}/admin/orders/${orderId}/status/`,
-            { status },
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.patch(`${API_URL}/admin/orders/${orderId}/status/`, { status }, { headers: getAuthHeader() });
         return { success: true, data: response.data };
     } catch (error) {
         console.error('Error updating order status:', error);
@@ -211,11 +177,7 @@ export const updateOrderStatus = async (orderId, status) => {
 
 export const sendNotification = async (notificationData) => {
     try {
-        const response = await axios.post(
-            `${API_URL}/admin/send-notification/`,
-            notificationData,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.post(`${API_URL}/admin/send-notification/`, notificationData, { headers: getAuthHeader() });
         return { success: true, data: response.data };
     } catch (error) {
         console.error('Error sending notification:', error);
@@ -223,6 +185,7 @@ export const sendNotification = async (notificationData) => {
     }
 };
 
+// =================== Shops ===================
 export const getShops = async () => {
     try {
         const response = await axios.get(`${API_URL}/shops/`);
@@ -245,15 +208,10 @@ export const getShopById = async (id) => {
 
 export const getMyShop = async () => {
     try {
-        const response = await axios.get(
-            `${API_URL}/shops/my_shop/`,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.get(`${API_URL}/shops/my_shop/`, { headers: getAuthHeader() });
         return response.data;
     } catch (error) {
-        if (error.response?.status === 404) {
-            return null;
-        }
+        if (error.response?.status === 404) return null;
         console.error('Error fetching my shop:', error);
         return null;
     }
@@ -261,43 +219,19 @@ export const getMyShop = async () => {
 
 export const createShop = async (shopData) => {
     try {
-        const response = await axios.post(
-            `${API_URL}/shops/`,
-            shopData,
-            { 
-                headers: {
-                    ...getAuthHeader(),
-                    'Content-Type': 'multipart/form-data'
-                }
-            }
-        );
+        const response = await axios.post(`${API_URL}/shops/`, shopData, { headers: { ...getAuthHeader(), 'Content-Type': 'multipart/form-data' } });
         return { success: true, data: response.data };
     } catch (error) {
-        return {
-            success: false,
-            error: error.response?.data || 'เกิดข้อผิดพลาดในการสร้างร้านค้า'
-        };
+        return { success: false, error: error.response?.data || 'เกิดข้อผิดพลาดในการสร้างร้านค้า' };
     }
 };
 
 export const updateShop = async (shopId, shopData) => {
     try {
-        const response = await axios.patch(
-            `${API_URL}/shops/${shopId}/`,
-            shopData,
-            { 
-                headers: {
-                    ...getAuthHeader(),
-                    'Content-Type': 'multipart/form-data'
-                }
-            }
-        );
+        const response = await axios.patch(`${API_URL}/shops/${shopId}/`, shopData, { headers: { ...getAuthHeader(), 'Content-Type': 'multipart/form-data' } });
         return { success: true, data: response.data };
     } catch (error) {
-        return {
-            success: false,
-            error: error.response?.data || 'เกิดข้อผิดพลาดในการอัพเดทร้านค้า'
-        };
+        return { success: false, error: error.response?.data || 'เกิดข้อผิดพลาดในการอัพเดทร้านค้า' };
     }
 };
 
@@ -313,57 +247,27 @@ export const getShopProducts = async (shopId) => {
 
 export const addShopProduct = async (productData) => {
     try {
-        const response = await axios.post(
-            `${API_URL}/shops/add_product/`,
-            productData,
-            { 
-                headers: {
-                    ...getAuthHeader(),
-                    'Content-Type': 'multipart/form-data'
-                }
-            }
-        );
+        const response = await axios.post(`${API_URL}/shops/add_product/`, productData, { headers: { ...getAuthHeader(), 'Content-Type': 'multipart/form-data' } });
         return { success: true, data: response.data };
     } catch (error) {
-        return {
-            success: false,
-            error: error.response?.data || 'เกิดข้อผิดพลาดในการเพิ่มสินค้า'
-        };
+        return { success: false, error: error.response?.data || 'เกิดข้อผิดพลาดในการเพิ่มสินค้า' };
     }
 };
 
 export const updateShopProduct = async (productId, productData) => {
     try {
-        const response = await axios.patch(
-            `${API_URL}/shops/${productId}/update_product/`,
-            productData,
-            { 
-                headers: {
-                    ...getAuthHeader(),
-                    'Content-Type': 'multipart/form-data'
-                }
-            }
-        );
+        const response = await axios.patch(`${API_URL}/shops/${productId}/update_product/`, productData, { headers: { ...getAuthHeader(), 'Content-Type': 'multipart/form-data' } });
         return { success: true, data: response.data };
     } catch (error) {
-        return {
-            success: false,
-            error: error.response?.data || 'เกิดข้อผิดพลาดในการแก้ไขสินค้า'
-        };
+        return { success: false, error: error.response?.data || 'เกิดข้อผิดพลาดในการแก้ไขสินค้า' };
     }
 };
 
 export const deleteShopProduct = async (productId) => {
     try {
-        const response = await axios.delete(
-            `${API_URL}/shops/${productId}/delete_product/`,
-            { headers: getAuthHeader() }
-        );
+        const response = await axios.delete(`${API_URL}/shops/${productId}/delete_product/`, { headers: getAuthHeader() });
         return { success: true };
     } catch (error) {
-        return {
-            success: false,
-            error: error.response?.data || 'เกิดข้อผิดพลาดในการลบสินค้า'
-        };
+        return { success: false, error: error.response?.data || 'เกิดข้อผิดพลาดในการลบสินค้า' };
     }
 };

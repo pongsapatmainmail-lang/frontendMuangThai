@@ -72,6 +72,7 @@
     justify-content: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     font-size: 60px;
+    color: white;
 }
 
 .shop-text-info {
@@ -165,28 +166,69 @@
     color: #666;
 }
 
+/* ===== Responsive สำหรับมือถือ ===== */
 @media (max-width: 768px) {
+    .shop-detail-container {
+        padding: 10px;
+    }
+
     .shop-info-detail {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 20px;
+        padding: 20px;
     }
 
     .shop-logo-detail {
-        margin-top: -75px;
+        width: 120px;
+        height: 120px;
+        margin-top: -60px;
+    }
+
+    .logo-placeholder-detail {
+        font-size: 48px;
+    }
+
+    .shop-text-info h1 {
+        font-size: 24px;
+    }
+
+    .shop-text-info > p {
+        font-size: 14px;
     }
 
     .shop-meta {
         justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
     }
 
     .shop-contact {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
+    }
+
+    .contact-item {
+        font-size: 13px;
     }
 
     .products-grid-detail {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 15px;
+    }
+
+    .shop-products-detail h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .empty-shop-products {
+        padding: 40px 10px;
+    }
+
+    .empty-shop-products p {
+        font-size: 16px;
     }
 }

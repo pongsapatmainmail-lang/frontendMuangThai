@@ -1,0 +1,142 @@
+.notifications-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.notifications-header h1 {
+    color: #ee4d2d;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.unread-count {
+    color: #666;
+    font-size: 14px;
+}
+
+.mark-all-btn {
+    padding: 10px 20px;
+    background: white;
+    color: #ee4d2d;
+    border: 1px solid #ee4d2d;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.mark-all-btn:hover {
+    background: #ee4d2d;
+    color: white;
+}
+
+.empty-notifications {
+    text-align: center;
+    padding: 80px 20px;
+    background: white;
+    border-radius: 8px;
+}
+
+.empty-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.empty-notifications p {
+    font-size: 18px;
+    color: #666;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notification-item {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    align-items: start;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.notification-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.notification-item.unread {
+    background: #fff8f5;
+    border-color: #ee4d2d;
+}
+
+.notification-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    color: #333;
+}
+
+.notification-message {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 8px 0;
+    line-height: 1.5;
+}
+
+.notification-time {
+    font-size: 12px;
+    color: #999;
+}
+
+.unread-dot {
+    width: 12px;
+    height: 12px;
+    background: #ee4d2d;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .notifications-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .mark-all-btn {
+        width: 100%;
+    }
+
+    .notification-item {
+        padding: 15px;
+    }
+
+    .notification-icon {
+        font-size: 24px;
+    }
+}

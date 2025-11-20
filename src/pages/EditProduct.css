@@ -1,0 +1,28 @@
+.edit-product-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.edit-product-header {
+    margin-bottom: 30px;
+}
+
+.edit-product-header h1 {
+    color: #333;
+    font-size: 28px;
+    margin-top: 15px;
+}
+
+.edit-product-form-container {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .edit-product-form-container {
+        padding: 20px;
+    }
+}
